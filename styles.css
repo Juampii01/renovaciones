@@ -288,3 +288,6 @@ p { margin: 0; }
 
 .area:last-child:nth-child(odd) { grid-column: 1 / -1; }
 @media (max-width: 640px) { .area:last-child:nth-child(odd) { grid-column: auto; } }
+
+.mock-screen.has-img { padding: 0; min-height: 0; display: block; }
+.mock-screen.has-img img { display: block; width: 100%; height: auto; }

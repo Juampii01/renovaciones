@@ -51,14 +51,14 @@
   const bars = hs => `<div class="scr-bars">${hs.map(h => `<i style="--h:${h}%"></i>`).join("")}</div>`;
 
   const tours = [
-    { id: "panel", tab: "Panel del negocio", url: "influenup.app/panel/clientes",
+    { id: "panel", img: "capturas/panel-clientes.webp", alt: "Lista de clientes del panel del negocio", tab: "Panel del negocio", url: "influenup.app/panel/clientes",
       title: "Panel del negocio",
       desc: "La ficha de cada cliente con todo lo que el equipo necesita: fechas, pagos, salud del cliente y su avance en el programa.",
       points: ["Semáforo de salud y alertas de clientes en riesgo", "Fechas de inicio, fin y renovación editables", "Revisión semanal y CSM asignado"],
       screen: hero("Clientes", "Quién necesita atención esta semana") +
         `<div class="scr-kpis">${k("Activos", "68")}${k("En riesgo", "5")}${k("Terminan este mes", "7")}</div>` +
         `<div class="scr-list">${row("Cliente ejemplo · Programa Advance", "Al día")}${row("Cliente ejemplo · Programa Core", "Revisar", "warn")}${row("Cliente ejemplo · Renovación", "Renovó", "info")}${row("Cliente ejemplo · Programa Core", "Al día")}</div>` },
-    { id: "portal", tab: "Portal del cliente", url: "influenup.app/portal",
+    { id: "portal", img: "capturas/portal.webp", alt: "Inicio del portal del cliente", tab: "Portal del cliente", url: "influenup.app/portal",
       title: "Portal del cliente",
       desc: "Donde tus clientes trabajan su negocio: documentos, plan de acción, métricas y su progreso en el programa.",
       points: ["Avatar, Oferta y Pilares con revisión de la IA", "Plan de acción por sesiones con casillas", "Descarga de documentos en Word"],
@@ -72,13 +72,13 @@
       screen: hero("Conversaciones", "12 leads respondieron esta semana") +
         `<div class="scr-list">${row("Lead ejemplo · pidió precio", "Prioridad alta", "warn")}${row("Lead ejemplo · agendó llamada", "Seguir")}${row("Lead ejemplo · sin respuesta 3 días", "Recontactar", "info")}</div>` +
         `<div class="scr-chat"><div class="bubble ai">Situación: el lead pidió precio sin contexto. Acción sugerida: preguntar por su objetivo antes de hablar de inversión.</div></div>` },
-    { id: "ia", tab: "Javier IA", url: "influenup.app/portal/influenup-ia",
+    { id: "ia", img: "capturas/javier-ia.webp", alt: "Conversación con Javier IA", tab: "Javier IA", url: "influenup.app/portal/influenup-ia",
       title: "Javier IA",
       desc: "Un asistente entrenado con tu método que responde a tus clientes las 24 horas, con sus propios documentos como contexto.",
       points: ["Responde con tu criterio y tus casos de referencia", "Lee el Plan de negocio y los documentos del cliente", "Topes diarios para controlar el coste"],
       screen: hero("Javier IA", "Disponible las 24 horas") +
         `<div class="scr-chat"><div class="bubble me">¿Cómo estructuro mi oferta si vendo mentorías de 3 meses?</div><div class="bubble ai">Empieza por el resultado concreto que promete tu avatar en 90 días. Con lo que tienes en tu Oferta Definitiva, te propongo tres bloques…</div><div class="bubble me">Y el precio, ¿lo pongo en la llamada o antes?</div></div>` },
-    { id: "contenido", tab: "Contenido y copy", url: "influenup.app/portal/copy",
+    { id: "contenido", img: "capturas/copy.webp", alt: "Empleado de Copy", tab: "Contenido y copy", url: "influenup.app/portal/copy",
       title: "Contenido y copy",
       desc: "Las herramientas para crear contenido: guiones, copies de anuncios y landings, transcripciones y análisis de competidores.",
       points: ["Empleado de Copy por canal y nivel de consciencia", "Guiones de contenido con plantillas del equipo", "Competidores con sus mejores piezas transcritas"],
@@ -92,7 +92,7 @@
       screen: hero("Cobros del mes", "Lo que entra y lo que falta") +
         bars([42, 58, 50, 72, 64, 86, 78]) +
         `<div class="scr-list">${row("Cuota 2 de 3 · Cliente ejemplo", "Vence en 3 días", "warn")}${row("Factura S-0xx-2026", "Borrador en GHL", "info")}${row("Cuota 1 de 2 · Cliente ejemplo", "Pagada")}</div>` },
-    { id: "equipo", tab: "Equipo", url: "influenup.app/panel/tareas",
+    { id: "equipo", img: "capturas/tareas.webp", alt: "Tablero de tareas del equipo", tab: "Equipo", url: "influenup.app/panel/tareas",
       title: "Equipo y operación",
       desc: "Lo que el equipo usa a diario para coordinarse: tareas, agenda, formación por rol y el centro operativo.",
       points: ["Tablero de tareas con aviso en Slack", "Formación por rol con feedback de la IA", "Centro operativo con los procesos del equipo"],
@@ -111,7 +111,14 @@
       document.getElementById("tour-desc").textContent = t.desc;
       document.getElementById("tour-points").innerHTML = t.points.map(p => `<li>${p}</li>`).join("");
       document.getElementById("tour-url").textContent = t.url;
-      screenEl.innerHTML = t.screen;
+      screenEl.classList.toggle("has-img", !!t.img);
+      screenEl.innerHTML = t.img
+        ? `<img src="${t.img}" alt="${t.alt}" width="1568" height="772" loading="lazy">`
+        : t.screen;
+      const cap = document.getElementById("tour-caption");
+      if (cap) cap.textContent = t.img
+        ? "Captura real de la plataforma. Nombres y notas de clientes difuminados."
+        : "Pantalla de referencia con datos de ejemplo.";
       screenEl.classList.remove("swap"); void screenEl.offsetWidth; screenEl.classList.add("swap");
       tabsEl.querySelectorAll(".tour-tab").forEach((b, j) => b.setAttribute("aria-selected", String(j === i)));
     };
