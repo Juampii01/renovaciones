@@ -296,3 +296,15 @@ p { margin: 0; }
 
 .mock-screen.has-img { padding: 0; min-height: 0; display: block; }
 .mock-screen.has-img img { display: block; width: 100%; height: auto; }
+
+/* Costes si no se renueva */
+.costos { margin-top: 36px; max-width: 640px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-2); overflow: hidden; }
+.costo { display: flex; justify-content: space-between; gap: 16px; padding: 14px 22px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.costo span { color: var(--muted); }
+.costo strong { font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+.costo-total { border-bottom: 0; background: var(--surface); }
+.costo-total span { color: var(--fg); font-weight: 600; }
+.costo-total strong { color: var(--warn); font-size: 17px; }
+.terms-3 { grid-template-columns: repeat(3, 1fr); }
+.term-warn { border-top-color: var(--warn); }
+@media (max-width: 860px) { .terms-3 { grid-template-columns: 1fr; } }
