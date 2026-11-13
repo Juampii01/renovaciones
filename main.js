@@ -85,6 +85,20 @@
       screen: hero("Empleado de Copy", "3 variantes listas para usar") +
         `<div class="scr-kpis">${k("Guiones", "33")}${k("Copies", "31")}${k("Transcripciones", "60")}</div>` +
         `<div class="scr-list">${row("Anuncio · problema consciente", "Variante A")}${row("Landing · VSL", "Variante B", "info")}${row("Email 2 de 5 · secuencia", "Guardado")}</div>` },
+    { id: "kpis", tab: "KPIs", url: "influenup.app/panel/cliente/metricas",
+      title: "KPIs del cliente",
+      desc: "Los números de cada cliente con la forma de la planilla del equipo: el año entero, el detalle de un mes y los anuncios semana a semana.",
+      points: ["Año completo con los % objetivo en verde o rojo", "Mes con variación, evolución de 6 meses y embudo", "KPIs de Ads que completa el propio cliente"],
+      screen: hero("KPIs · Julio", "Comparado con junio") +
+        `<div class="scr-kpis">${k("Inversión Ads", "525 €")}${k("Seguidores", "+462")}${k("ROAS", "2,21")}</div>` +
+        bars([28, 34, 30, 44, 41, 70]) +
+        `<div class="scr-list">${row("Ofertas aceptadas", "+100%")}${row("Videollamadas realizadas", "+50%", "info")}${row("Conversaciones", "-16%", "warn")}</div>` },
+    { id: "calendario", tab: "Calendario de contenido", url: "influenup.app/panel/contenido",
+      title: "Calendario de contenido",
+      desc: "El plan de contenido de las cuentas de Influenup: qué se publica, dónde y cuándo, con lo ya publicado y sus números al lado.",
+      points: ["Vista mensual y semanal por cuenta", "Idea, formato, estado, gancho, copy y CTA en cada pieza", "Instagram conectado: lo publicado con me gusta y comentarios"],
+      screen: hero("Cuenta de Influenup", "Noviembre · 12 piezas planificadas") +
+        `<div class="scr-list">${row("Reel · 3 errores al vender por DM", "Grabado", "info")}${row("Carrusel · caso de cliente", "Idea")}${row("Reel · publicado el lunes", "1.240 me gusta")}${row("Historia · CTA a DM", "Programado", "info")}</div>` },
     { id: "finanzas", tab: "Finanzas", url: "influenup.app/panel/pagos",
       title: "Finanzas y facturación",
       desc: "Cuotas, pagos, gastos y facturas en un solo sitio, conectados con GoHighLevel y con avisos antes de cada vencimiento.",
@@ -97,7 +111,7 @@
       desc: "Lo que el equipo usa a diario para coordinarse: tareas, agenda, formación por rol y el centro operativo.",
       points: ["Tablero de tareas con aviso en Slack", "Formación por rol con feedback de la IA", "Centro operativo con los procesos del equipo"],
       screen: hero("Tareas", "Tablero del equipo") +
-        `<div class="scr-list">${row("Revisar Plan de negocio · Cliente ejemplo", "Tomás", "info")}${row("Emitir facturas de noviembre", "Laura")}${row("Llamada de onboarding", "María", "info")}${row("Grabar módulo de formación", "JR", "warn")}</div>` }
+        `<div class="scr-list">${row("Revisar Plan de negocio · Cliente ejemplo", "Tomás", "info")}${row("Emitir facturas de noviembre", "Laura")}${row("Llamada de onboarding", "Tomás", "info")}${row("Grabar módulo de formación", "JR", "warn")}</div>` }
   ];
 
   const tabsEl = document.querySelector(".tour-tabs");
