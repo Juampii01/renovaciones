@@ -341,3 +341,7 @@ p { margin: 0; }
 .act p b { color: var(--fg); font-weight: 600; }
 .act-new { border-color: rgba(140,251,223,.4); background: linear-gradient(180deg, rgba(140,251,223,.06), var(--bg-2)); }
 @media (max-width: 860px) { .acts { grid-template-columns: 1fr; } }
+
+/* Hero con captura real */
+.mock-body-img { display: block; padding: 0; min-height: 0; }
+.mock-body-img img { display: block; width: 100%; height: auto; }
