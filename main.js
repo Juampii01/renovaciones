@@ -72,11 +72,11 @@
       screen: hero("Conversaciones", "12 leads respondieron esta semana") +
         `<div class="scr-list">${row("Lead ejemplo · pidió precio", "Prioridad alta", "warn")}${row("Lead ejemplo · agendó llamada", "Seguir")}${row("Lead ejemplo · sin respuesta 3 días", "Recontactar", "info")}</div>` +
         `<div class="scr-chat"><div class="bubble ai">Situación: el lead pidió precio sin contexto. Acción sugerida: preguntar por su objetivo antes de hablar de inversión.</div></div>` },
-    { id: "ia", img: "capturas/javier-ia.webp", w: 1568, h: 772, alt: "Conversación con Javier IA", tab: "Javier IA", url: "influenup.app/portal/influenup-ia",
-      title: "Javier IA",
+    { id: "ia", img: "capturas/javier-ia.webp", w: 1568, h: 772, alt: "Conversación con Influenup IA", tab: "Influenup IA", url: "influenup.app/portal/influenup-ia",
+      title: "Influenup IA",
       desc: "Un asistente entrenado con tu método que responde a tus clientes las 24 horas, con sus propios documentos como contexto.",
       points: ["Responde con tu criterio y tus casos de referencia", "Lee el Plan de negocio y los documentos del cliente", "Topes diarios para controlar el coste"],
-      screen: hero("Javier IA", "Disponible las 24 horas") +
+      screen: hero("Influenup IA", "Disponible las 24 horas") +
         `<div class="scr-chat"><div class="bubble me">¿Cómo estructuro mi oferta si vendo mentorías de 3 meses?</div><div class="bubble ai">Empieza por el resultado concreto que promete tu avatar en 90 días. Con lo que tienes en tu Oferta Definitiva, te propongo tres bloques…</div><div class="bubble me">Y el precio, ¿lo pongo en la llamada o antes?</div></div>` },
     { id: "contenido", img: "capturas/copy.webp", w: 1568, h: 772, alt: "Empleado de Copy", tab: "Contenido y copy", url: "influenup.app/portal/copy",
       title: "Contenido y copy",
