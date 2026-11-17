@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Influenup · Todo lo construido y cómo seguimos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{--bg:#070b14;--bg-2:#0c1322;--surface:#101a2c;--line:rgba(160,190,230,.14);--fg:#eaf1fb;--muted:#9aa8bf;--mint:#8cfbdf;--cyan:#00aeef;--ink:#04110d;--display:"Sora",system-ui,sans-serif;--body:"DM Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:var(--body);-webkit-font-smoothing:antialiased}
+.deck{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory}
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:6vh 6vw;position:relative;border-bottom:1px solid var(--line)}
+.slide.alt{background:var(--bg-2)}
+.slide.accent{background:linear-gradient(135deg,#0d2a2a,#071a2a)}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(40px,5.4vw,76px)}
+h2{font-size:clamp(30px,3.4vw,52px)}
+h3{font-size:clamp(18px,1.5vw,22px)}
+p{margin:0;font-size:clamp(17px,1.35vw,21px);line-height:1.55;color:var(--muted)}
+.eyebrow{font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--mint);margin-bottom:18px}
+.grad{background:linear-gradient(90deg,var(--mint),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.screen{display:grid;grid-template-columns:minmax(300px,30%) 1fr;gap:4vw;align-items:center}
+.screen .txt{display:flex;flex-direction:column;gap:20px}
+.screen ul{margin:0;padding:0;list-style:none;display:grid;gap:10px}
+.screen li{padding-left:22px;position:relative;font-size:clamp(16px,1.2vw,19px);color:var(--fg)}
+.screen li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.shot{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#0b111d;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.shot img{display:block;width:100%;height:auto}
+.tag{display:inline-block;align-self:flex-start;font-family:var(--mono);font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.tag.new{border-color:rgba(140,251,223,.45);color:var(--mint)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.stat{padding:28px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.stat .n{font-family:var(--mono);font-size:clamp(36px,4vw,60px);color:var(--mint);display:block}
+.stat p{margin-top:6px;font-size:17px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.card{padding:36px;border-radius:20px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.card.rec{border-color:rgba(140,251,223,.5);background:linear-gradient(180deg,rgba(140,251,223,.08),var(--surface))}
+.price{font-family:var(--mono);font-size:clamp(44px,4.6vw,72px);color:var(--fg)}
+.price small{font-size:20px;color:var(--muted);margin-left:8px}
+.card ul{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--fg);font-size:clamp(16px,1.2vw,19px)}
+.money{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.money .stat .n{color:var(--fg)}
+.money .stat.hi .n{color:var(--mint)}
+.big{font-family:var(--display);font-size:clamp(28px,3vw,44px);color:var(--fg);max-width:1100px;line-height:1.3;margin-top:28px}
+.foot{position:absolute;bottom:3vh;left:6vw;right:6vw;display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;color:var(--muted)}
+.nav{position:fixed;right:24px;bottom:24px;display:flex;gap:8px;z-index:10}
+.nav button{background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:12px;width:44px;height:44px;font-size:18px;cursor:pointer}
+.counter{position:fixed;left:24px;bottom:30px;font-family:var(--mono);font-size:13px;color:var(--muted);z-index:10}
+@media (max-width:900px){.screen,.two,.money{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.slide{padding:10vh 6vw}}
+@media print{.deck{height:auto;overflow:visible}.nav,.counter{display:none}.slide{page-break-after:always}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<section class="slide accent">
+  <div class="eyebrow">Influenup · Noviembre 2026</div>
+  <h1>Todo lo que construimos<br><span class="grad">y cómo seguimos</span></h1>
+  <p style="margin-top:28px;max-width:760px">Un recorrido pantalla por pantalla por la plataforma: qué hace cada parte, a quién le sirve y qué cuesta mantenerla funcionando.</p>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">En números</div>
+  <h2>De 10 módulos a una plataforma completa</h2>
+  <div class="stats">
+    <div class="stat"><span class="n">263</span><p>cambios publicados en producción desde el 21 de agosto</p></div>
+    <div class="stat"><span class="n">88</span><p>funcionalidades en total</p></div>
+    <div class="stat"><span class="n">69</span><p>nuevas, fuera de los 10 módulos del contrato</p></div>
+    <div class="stat"><span class="n">30</span><p>clientes con Instagram conectado</p></div>
+  </div>
+</section>
+
+<section class="slide alt">
+  <div class="eyebrow">Parte 1</div>
+  <h1>Lo que usan<br><span class="grad">tus clientes</span></h1>
+  <p style="margin-top:24px;max-width:720px">El portal donde cada cliente trabaja su programa todos los días.</p>
+</section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag">En el contrato</span><h2>Portal del cliente</h2>
+  <p>Cada cliente entra a su propio espacio, con todo su programa en un solo lugar.</p>
+  <ul><li>Sus documentos, plan de acción y progreso</li><li>Acceso a todas las herramientas de IA</li><li>Onboarding obligatorio antes de empezar</li></ul>
+</div><div class="shot"><img src="capturas/portal.webp" alt="Portal del cliente"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag">En el contrato</span><h2>Javier IA</h2>
+  <p>El CSM virtual: responde con tu criterio, a cualquier hora, conociendo el negocio de cada cliente.</p>
+  <ul><li>773 mensajes de 16 clientes en el último mes</li><li>Lee sus documentos, avatar y oferta</li><li>Conversaciones guardadas</li></ul>
+</div><div class="shot"><img src="capturas/javier-ia.webp" alt="Javier IA"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag">En el contrato</span><h2>Conversaciones de Instagram</h2>
+  <p>Los DMs del cliente sincronizados cada día y analizados por la IA para detectar leads calientes y errores.</p>
+  <ul><li>415 conversaciones analizadas en el último mes</li><li>Resumen general y conversaciones ocultas</li><li>Renovación automática de accesos</li></ul>
+</div><div class="shot"><img src="capturas/conversaciones.webp" alt="Conversaciones de Instagram"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag">En el contrato</span><h2>Feedback de llamadas</h2>
+  <p>Cada llamada de venta se compara con el guion de Influenup, etapa por etapa.</p>
+  <ul><li>Etapas bien, mal o salteadas</li><li>Errores marcados: precio sin valor, cierre ausente…</li><li>55 llamadas analizadas en el último mes</li></ul>
+</div><div class="shot"><img src="capturas/llamadas.webp" alt="Feedback de llamadas"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Copy y guiones de contenido</h2>
+  <p>Anuncios, emails y guiones de contenido orgánico generados con los documentos de cada cliente.</p>
+  <ul><li>Guiones orgánicos, separados de los de anuncios</li><li>69 tandas de guiones en el último mes</li><li>Análisis de competidores de Instagram y YouTube</li></ul>
+</div><div class="shot"><img src="capturas/copy.webp" alt="Copy y guiones"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>KPIs del cliente</h2>
+  <p>La misma planilla del equipo, dentro de la plataforma: el año, el mes y los anuncios.</p>
+  <ul><li>Vistas General, Mes y Ads</li><li>Se completan solos desde Instagram</li><li>El cliente carga los de Ads desde su portal</li></ul>
+</div><div class="shot"><img src="capturas/kpis.webp" alt="KPIs del cliente"></div></div></section>
+
+<section class="slide alt">
+  <div class="eyebrow">Parte 2</div>
+  <h1>Lo que usa<br><span class="grad">tu equipo</span></h1>
+  <p style="margin-top:24px;max-width:720px">El panel interno desde donde Tomás, Laura y el equipo gestionan a todos los clientes.</p>
+</section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Clientes</h2>
+  <p>Toda la cartera en una lista, con salud, fechas, última sesión y seguimiento.</p>
+  <ul><li>Semáforo y estado editables en un clic</li><li>Seguimiento automático y aviso de pre-renovación</li><li>Filtros y columnas reordenables</li></ul>
+</div><div class="shot"><img src="capturas/panel-clientes.webp" alt="Lista de clientes"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Ficha del cliente</h2>
+  <p>Todo lo de un cliente en una pantalla: diagnóstico, contenido, acompañamiento y ventas.</p>
+  <ul><li>Documentos y onboarding con su avance</li><li>Plan de acción, implementación y Plan de negocio</li><li>Conversaciones y llamadas analizadas</li></ul>
+</div><div class="shot"><img src="capturas/ficha-cliente.webp" alt="Ficha del cliente"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag">Hablado</span><h2>Onboarding</h2>
+  <p>Del contrato firmado a los accesos entregados, conectado con GoHighLevel.</p>
+  <ul><li>Contrato automático y firma por webhook</li><li>Ficha, cuotas e invitación al portal</li><li>Aviso en #new-clients</li></ul>
+</div><div class="shot"><img src="capturas/onboarding.webp" alt="Onboarding"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Revisión de documentos con IA</h2>
+  <p>La IA revisa Avatar, Oferta y Pilares con los criterios del equipo antes de que el cliente vea nada.</p>
+  <ul><li>Resumen corto para el equipo</li><li>Aprobar o pedir cambios en un clic</li><li>Puntuación de 1 a 10</li></ul>
+</div><div class="shot"><img src="capturas/revision-ia.webp" alt="Revisión de documentos"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Informe mensual</h2>
+  <p>Dónde está fallando cada cliente según sus conversaciones y llamadas del mes.</p>
+  <ul><li>Un informe por cliente, generado por la IA</li><li>Filtro por CSM</li><li>Aviso de quién no tiene nada analizado</li></ul>
+</div><div class="shot"><img src="capturas/informe-mensual.webp" alt="Informe mensual"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Formación del equipo</h2>
+  <p>El plan de cada rol con puntos, plazos y feedback de la IA con tu criterio.</p>
+  <ul><li>Setter, SDR, Closer y CSM</li><li>Progreso y pasos vencidos por persona</li><li>Videos y documentos en cada paso</li></ul>
+</div><div class="shot"><img src="capturas/formacion.webp" alt="Formación"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag">En el contrato</span><h2>Mentor del equipo</h2>
+  <p>El equipo pregunta por un cliente concreto y responde con tu criterio cargado.</p>
+  <ul><li>Cerebro editable por el equipo</li><li>Conversaciones guardadas</li><li>Respuestas con la metodología de Influenup</li></ul>
+</div><div class="shot"><img src="capturas/mentor.webp" alt="Mentor"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Tareas y novedades</h2>
+  <p>Los pedidos internos del equipo, asignados y con aviso en Slack.</p>
+  <ul><li>Tareas privadas y por persona</li><li>Avisos automáticos en Slack</li><li>Novedades del equipo aprobadas antes de publicarse</li></ul>
+</div><div class="shot"><img src="capturas/tareas.webp" alt="Tareas"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Contenido</h2>
+  <p>El calendario de contenido de Influenup, por cuenta, con Instagram conectado.</p>
+  <ul><li>Vista mensual y semanal</li><li>Estados: idea, guion, grabado, editado, publicado</li><li>Lo publicado y sus números al lado</li></ul>
+</div><div class="shot"><img src="capturas/contenido.webp" alt="Contenido"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Leads y ventas</h2>
+  <p>Los prospectos de Influenup separados de los clientes, con fuente, nicho y rating.</p>
+  <ul><li>Leads por Instagram y Masterclass</li><li>Carga diaria de setters</li><li>Embudo de adquisición por canal</li></ul>
+</div><div class="shot"><img src="capturas/leads.webp" alt="Leads"></div></div></section>
+
+<section class="slide"><div class="screen"><div class="txt">
+  <span class="tag new">Nuevo</span><h2>Finanzas</h2>
+  <p>Los Excel de cobros, dentro de la plataforma: cuotas, pagos, gastos y facturas.</p>
+  <ul><li>Cuotas vencidas y por vencer, con aviso</li><li>Facturas con numeración propia y AED</li><li>Resumen del negocio: cash, por cobrar, gastos</li></ul>
+</div><div class="shot"><img src="capturas/pagos.webp" alt="Pagos y cuotas"></div></div></section>
+
+<section class="slide alt">
+  <div class="eyebrow">Parte 3</div>
+  <h1>Lo que cuesta<br><span class="grad">mantenerla funcionando</span></h1>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Con 500 USD al mes</div>
+  <h2>La mayor parte se va en plataformas, sobre todo en IA</h2>
+  <div class="money">
+    <div class="stat"><span class="n">500</span><p>USD al mes</p></div>
+    <div class="stat"><span class="n">−325</span><p>plataformas: IA (~10 USD por día), Apify, base de datos, hosting y emails</p></div>
+    <div class="stat hi"><span class="n">175</span><p>lo que queda por todo mi trabajo de mantenimiento</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">¿Y si quitamos herramientas?</div>
+  <h2>Quitar cosas no baja el costo</h2>
+  <p class="big">La IA que más consume es la que tus clientes usan todos los días: Javier IA y el análisis de conversaciones. Esa no se puede quitar. Y la plataforma hay que mantenerla igual, tenga 70 funciones o 50.</p>
+</section>
+
+<section class="slide accent">
+  <div class="eyebrow">Cómo seguimos</div>
+  <h2>Dos opciones</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Mantenimiento</h3>
+      <div class="price">500<small>USD / mes</small></div>
+      <ul>
+        <li>Todo funcionando como está hoy</li>
+        <li>Corrección de fallas y adaptación a cambios de Meta, GoHighLevel y la IA</li>
+        <li>Sin actualizaciones ni desarrollos nuevos</li>
+        <li>Lo nuevo se presupuesta aparte</li>
+        <li>Pago trimestral por adelantado: 1.500 USD</li>
+      </ul>
+    </div>
+    <div class="card rec">
+      <h3>Como hasta ahora</h3>
+      <div class="price">1.000<small>USD / mes</small></div>
+      <ul>
+        <li>Todo lo del mantenimiento</li>
+        <li>Seguimos desarrollando y mejorando la plataforma</li>
+        <li>Actualizaciones y pedidos del equipo incluidos</li>
+        <li>Trabajando de la misma manera que estos meses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <h1>Gracias, <span class="grad">Javier</span></h1>
+  <p style="margin-top:24px">¿Cuál de las dos encaja mejor con Influenup?</p>
+</section>
+
+</main>
+<div class="counter" id="counter"></div>
+<div class="nav"><button id="prev" aria-label="Anterior">↑</button><button id="next" aria-label="Siguiente">↓</button></div>
+<script>
+(function(){
+  var deck=document.getElementById('deck'),slides=[].slice.call(document.querySelectorAll('.slide')),c=document.getElementById('counter');
+  function idx(){var t=deck.scrollTop,i=0;slides.forEach(function(s,k){if(s.offsetTop-10<=t)i=k});return i}
+  function go(i){i=Math.max(0,Math.min(slides.length-1,i));deck.scrollTo({top:slides[i].offsetTop,behavior:'smooth'})}
+  function upd(){c.textContent=(idx()+1)+' / '+slides.length}
+  deck.addEventListener('scroll',upd);upd();
+  document.getElementById('prev').onclick=function(){go(idx()-1)};
+  document.getElementById('next').onclick=function(){go(idx()+1)};
+  document.addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(idx()+1)}
+    if(['ArrowUp','ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(idx()-1)}
+  });
+})();
+</script>
+</body>
+</html>
